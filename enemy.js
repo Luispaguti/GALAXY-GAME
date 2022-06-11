@@ -22,6 +22,9 @@ class Enemy {
 
         this.bullets = []
         this.level = 0;
+
+         this.audio = new Audio ("audio/monster.wav");
+       
     }
     
     draw () {
@@ -41,6 +44,7 @@ class Enemy {
                 // this.h * -4,
                 -400
             )
+            this.audio.play();
             // this.level+=1
             // if (this.level > 500 && this.level < 1000){
             //     this.vx+= - 1

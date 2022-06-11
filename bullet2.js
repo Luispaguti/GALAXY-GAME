@@ -10,8 +10,8 @@ class Bullet2 {
         this.vx = -10;
         this.vy = 0
 
-        const audio = new Audio ("audio/shoot.wav");
-        audio.play();
+        // const audio = new Audio ("audio/shoot.wav");
+        // audio.play();
 
 
         // this.img = new Imagen()
@@ -51,7 +51,7 @@ class Bullet2 {
 
     
 
-    collidesBullets2(player) {
+    collidesBullets(player) {
         const collX = this.x <= player.x + player.w && this.x + this.r > player.x;
         const collY = this.y + this.r > player.y-15 && this.y <player.y-15 + player.h;
 

@@ -281,4 +281,16 @@ class Player {
     isAlive() {
       return this.score.total > 0;
     }
+    collides(player) {
+      const colX = this.x <= player.x + player.w-5 && this.x +this.w > player.x;
+      // - 5 para ajustar la colision
+     
+      const colY = this.y + this.h > player.y && this.y < player.y + player.h;
+
+      return colX && colY;
+      
+      // if (colX && colY){
+      //     console.log('colision')
+      // devuelve true si colisiona con un enemigo y false si no lo hace
+  }
   }

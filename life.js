@@ -26,10 +26,10 @@ class Life {
                 this.img.height,
                 this.x,
                 this.y - 200,
-                50,
+                60,
                 // this.w * 4,
                 // this.h * -4,
-                -40
+                -50
             )
             
 
@@ -60,7 +60,7 @@ class Life {
         const colX = this.x <= player.x + player.w && this.x +this.w-5 > player.x;
         // - 5 para ajustar la colision
        
-        const colY = this.y + this.h > player.y && this.y < player.y + player.h;
+        const colY = this.y + this.h > player.y && this.y < player.y - 20 + player.h;
  
         return colX && colY;
         

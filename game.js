@@ -24,6 +24,8 @@ class Game {
 
     this.record = new Record(this.ctx)
 
+    this.highscore = new Record(this.ctx,`Highscore: `+ this.highscore )
+
     this.img = new Image()
     this.img.src = './img/gameover4.png'
 
@@ -62,6 +64,7 @@ class Game {
       this.checkCollisions();
       this.checkCollisionsBullets()
       this.checkCollisionsLife()
+      // this.checkCollisionsBullets2()
      // this.scrollOffset++
      
       // this.checkCollisionsBullets2()
@@ -295,24 +298,24 @@ class Game {
           return true
         }
       })
-
+      enemy.bullets = enemy.bullets.filter((bullet) => {
+        if (bullet.collidesBullets(this.player)) {
+          this.player.hit()
+        
+          return false
+        } else {
+          return true
+        }
+      })
     })
-
+   
 
 
   }
 
-  //   checkCollisionsBullets2(){
-  //     this.player.bullets.forEach((bullet) => {
-  //       this.enemies2.forEach(enemy2 =>{
-
-  //         if (bullet.collidesBullets2(enemy2)){
-  //           enemy2.alive = false
-  //           console.log('hit')
-  //         }
-  //       })
-
-  //     });
+    // checkCollisionsBullets2(){
+    //   
+    // };
 
 
   // }
