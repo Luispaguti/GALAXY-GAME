@@ -5,7 +5,7 @@ class Background {
         this.y = -1
         this.vx =-2
 
-        this.w = this.ctx.canvas.width * 5
+        this.w = this.ctx.canvas.width * 6
         this.h = this.ctx.canvas.height
 
 

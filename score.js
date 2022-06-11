@@ -17,12 +17,16 @@ class Score {
         this.ctx.fillStyle = "red";
         this.ctx.fillRect(this.x, this.y, this.w * this.total, this.h);
         this.ctx.fillStyle = prevStyle;
-        this.ctx.strokeRect(this.x, this.y, this.w, this.h);
+        // this.ctx.strokeRect(this.x, this.y, this.w, this.h);
     }
 
     move (){}
 
     dec () {
-        this.total -= 0.05
+        this.total -= 0.10
+    }
+
+    doc () {
+        this.total += 0.05
     }
 }

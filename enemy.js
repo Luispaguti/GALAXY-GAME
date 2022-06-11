@@ -19,6 +19,8 @@ class Enemy {
 
         this.img3 = new Image()
         this.img3.src ='./img/enemy6.png'
+
+        this.bullets = []
     }
     
     draw () {
@@ -45,7 +47,7 @@ class Enemy {
                 this.img2.width,
                 this.img2.height,
                 this.x,
-                this.y + 80,
+                this.y,
                 100,
                 // this.w * 4,
                 // this.h * -4,
@@ -68,6 +70,9 @@ class Enemy {
             )
 
         } 
+        this.bullets.forEach(bullet => {
+            bullet.draw()
+        })
 }
 
         
@@ -83,9 +88,15 @@ class Enemy {
             this.vy *= 0
         }
         
-       
-         
+        this.bullets.forEach(bullet => {
+            bullet.move()
+        })
+
         
+
+        if (this.type % 10 === 0){
+            this.shoot()
+        }
         
     }
     isVisible(){
@@ -93,22 +104,27 @@ class Enemy {
     
     }
 
+    shoot(){
+        const bullet = new Bullet2(
+            this.ctx, 
+            this.x + this.w, 
+            this.y + this.h - 100)
+          this.bullets.push(bullet)
+    }
+
     collides(player) {
         const colX = this.x <= player.x + player.w-5 && this.x +this.w > player.x;
         // - 5 para ajustar la colision
-        
+       
         const colY = this.y + this.h > player.y && this.y < player.y + player.h;
-
+ 
         return colX && colY;
+        
+        // if (colX && colY){
+        //     console.log('colision')
         // devuelve true si colisiona con un enemigo y false si no lo hace
-
     }
-    // if (colX && colY) {
-    //     if (player.y + player.h <= this.y) {
-    //         return enemy.alive = false
-    //     } else {
-    //         return this.player.hit
-    //     }
-    // }
+
+         
 
 }

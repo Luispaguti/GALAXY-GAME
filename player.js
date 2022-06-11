@@ -18,7 +18,6 @@ class Player {
   
     this.bullets = []
     this.score = new Score(ctx)
-    this.record = new Record(ctx)
     this.scrollOffset = 0;
     // para pasar de nivel
   
@@ -29,7 +28,7 @@ class Player {
     this.img3 = new Image()
     this.img3.src = './img/spriteRunLeft2.png'
 
-
+    this.audio = new Audio ("audio/jump.wav")
     this.frames = 0 // esto va a representar en que cuadro nos encontramos actualmente de nuestra animación.
 
     this.sprites = {
@@ -39,7 +38,7 @@ class Player {
         width: 66
       },
       run: {
-        right:  this.img1,
+        right:  this.img1 ,
         left : this.img3,
         cropWidth : 341, // ancho del recorte de la imagen
         width : 127.875 
@@ -70,7 +69,7 @@ class Player {
       )
 
       if (this.frames> 59 && (this.currentSprite === this.sprites.stand.right || 
-        this.currentSprite === this.sprites.stando.left))
+        this.currentSprite === this.sprites.stand.left))
        {this.frames = 0}
        else if(this.frames> 29 &&
         (this.currentSprite === this.sprites.run.right||
@@ -84,7 +83,7 @@ class Player {
       })
 
       this.score.draw();
-      this.record.draw();
+
     }
   
     move() {
@@ -100,10 +99,19 @@ class Player {
     })
 
     this.bullets = this.bullets.filter((b) => b.isVisible());
+    // this.bullets = this.bullets.filter((b) => b.collidesBullets(enemy));
+    
     // para filtrar balas
     
-   
+    // this.bullets = this.bullets.filter((b) => b.collidesBullets(enemy));
+    // para intentar filtrar las balas
+    // this.bullets = this.bullets.filter((e) => {
+    //   if (e.collides(this.enemy)) {
+    //     return false;
+    //   }
 
+    //   return true;
+    // });
 
     // plataforma, desaparecen los enemigos
       if (this.x + this.w >= this.ctx.canvas.width) {
@@ -179,19 +187,18 @@ class Player {
 
 
         if (key === TOP && this.vy === 0) {
-            this.vy = -13;
-        
+            this.vy = -15;
+            this.audio.play();
           }
       
           if (key === RIGHT) {
             this.scrollOffset += 5;
-            this.records();
             this.vx = 3;
             this.currentSprite = this.sprites.run.right
             // si pulsas la tecla de la derecha el sprite actual del jugador será ese.
             this.currentCropWidth = this.sprites.run.cropWidth
             // el ancho actual de la imagen va a ser igual a esto.
-            this.width = this.sprites.run.width
+            this.width = this.sprites.run.width 
             
           }
       
@@ -253,6 +260,8 @@ class Player {
         // }
     }
 
+
+
     shoot(){
         const bullet = new Bullet(
           this.ctx, 
@@ -264,9 +273,9 @@ class Player {
     hit() {
       this.score.dec();
     }
-
-    records() {
-      this.record.plus();
+    
+    hitLife(){
+      this.score.doc();
     }
 
     isAlive() {
