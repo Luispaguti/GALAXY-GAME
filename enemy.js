@@ -21,9 +21,12 @@ class Enemy {
         this.img3.src ='./img/enemy6.png'
 
         this.bullets = []
+        this.level = 0;
     }
     
     draw () {
+        
+
         if (this.type % 10 === 0 ) {
             this.ctx.drawImage(
                 this.img,
@@ -38,6 +41,23 @@ class Enemy {
                 // this.h * -4,
                 -400
             )
+            // this.level+=1
+            // if (this.level > 500 && this.level < 1000){
+            //     this.vx+= - 1
+                
+            //     }
+            //     if (this.level > 1000 && this.level < 2000){
+            //         this.vx+= -2
+            //     }
+            //     if (this.level > 2000 && this.level < 3000){
+            //         this.vx+= -3
+            //     }
+            //     if (this.level > 4000 && this.level < 5000){
+            //             this.vx+= -4
+            //     }
+            //     if (this.level > 4000){
+            //         this.vx+= -5
+            //     }
         } 
         else if(this.type % 2 === 0 ) {
             this.ctx.drawImage(
@@ -53,6 +73,26 @@ class Enemy {
                 // this.h * -4,
                 -100
             )
+            
+            // this.level+=0.5
+            // console.log(this.level)
+            // if (this.level > 50 && this.level < 60){
+            //     this.vx+= -1
+            //     console.log('level 1')
+            //     }
+            //     else if (this.level > 60 && this.level < 70){
+            //         this.vx+= -2
+            //     }
+            //     else if (this.level > 70 && this.level < 80){
+            //         this.vx+= -3
+            //     }
+            //     else if (this.level > 90 && this.level < 100){
+            //             this.vx+= -4
+            //     }
+            //     else (this.level > 100)
+            //         this.vx+= -5
+            
+
         } else {
             
             this.ctx.drawImage(
@@ -68,8 +108,46 @@ class Enemy {
                 // this.h * -4,
                 -200
             )
+            // this.level+=1
+            // if (this.level > 500 && this.level < 1000){
+            //     this.vx+= -1
+            //     console.log('nivel 1')
+                
+            //     }
+            //     if (this.level > 1000 && this.level < 2000){
+            //         this.vx+= -2
+
+            //     }
+            //     if (this.level > 2000 && this.level < 3000){
+            //         this.vx+= -3
+            //     }
+            //     if (this.level > 3000 && this.level < 4000){
+            //             this.vx+= -4
+            //     }
+            //     if (this.level > 4000){
+            //         this.vx+= -5
+            //         console.log('nivel 5')
+            //     }
 
         } 
+
+        
+        
+            // if (this.level > 0 && this.level < 20){
+            // this.vx+= -0.1
+            // this.ctx.font = '50px serif';
+            // this.ctx.fillText('level 1', 50, 90);
+            // }
+            // if (this.level > 20 && this.level < 30){
+            //     this.vx+= -0.2
+            // }
+            // if (this.level > 40 && this.level < 60){
+            //     this.vx+= -0.3
+            // }
+            // if (this.level > 60 ){
+            //         this.vx+= -0.4
+            // }
+
         this.bullets.forEach(bullet => {
             bullet.draw()
         })
@@ -111,6 +189,14 @@ class Enemy {
             this.y + this.h - 100)
           this.bullets.push(bullet)
     }
+    level1(){
+        console.log("¨MAMAHUE")
+        this.vx += -5 
+       
+    }
+
+
+
 
     collides(player) {
         const colX = this.x <= player.x + player.w-5 && this.x +this.w > player.x;

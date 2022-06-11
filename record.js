@@ -9,7 +9,7 @@ class Record {
        
        
        
-     this.total = 1;
+        // this.total = 1;
 
     }
      
@@ -22,19 +22,21 @@ class Record {
         const prevLine = this.ctx.lineWidth
         const prevStyle =  this.ctx.fillStyle 
         const prevStroke =  this.ctx.strokeStyle
-        this.ctx.font = " 800 30px Calibri";
-        this.ctx.fillStyle = "white";
-        this.ctx.fillText(this.scrollOffSet, 1400, 100);
-        this.ctx.strokeStyle = "white";
-        this.ctx.lineWidth = 5
-        this.ctx.strokeRect(1380, 65, 100, 50)
+        this.ctx.font = "600 30px Fantasy";
+        this.ctx.fillStyle = "yellow";
+        this.ctx.fillText(`Score: ${this.scrollOffSet}`, 1370, 100);
+        // this.ctx.strokeStyle = "white";
+        // this.ctx.lineWidth = 5
+        // this.ctx.strokeRect(1355, 65, 140, 50)
         this.ctx.lineWidth = prevLine
         this.ctx.fillStyle = prevStyle
         this.ctx.strokeStyle = prevStroke 
+
+        
     } 
 
     move(){}
     plus() {
-        this.total += 1
+        this.scrollOffSet += 1
     }
 }

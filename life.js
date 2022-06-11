@@ -3,7 +3,7 @@ class Life {
         this.ctx = ctx;
         this.x = this.ctx.canvas.width; 
         // porque van a aparecer por cualquier sitio de la derecha
-        this.y = Math.random() * this.ctx.canvas.height
+        this.y = Math.random()* this.ctx.canvas.height
         this.w = 0.05 * this.ctx.canvas.width
         this.h = 0.1 * this.ctx.canvas.height
         this.vx = -3
@@ -12,7 +12,7 @@ class Life {
         this.alive = true
 
         this.img = new Image()
-        this.img.src = './img/life.png'
+        this.img.src = './img/life1.png'
 
        
     }
@@ -25,11 +25,11 @@ class Life {
                 this.img.width,
                 this.img.height,
                 this.x,
-                this.y,
-                70,
+                this.y - 200,
+                50,
                 // this.w * 4,
                 // this.h * -4,
-                -70
+                -40
             )
             
 
@@ -57,7 +57,7 @@ class Life {
 
 
     collides(player) {
-        const colX = this.x <= player.x + player.w-5 && this.x +this.w > player.x;
+        const colX = this.x <= player.x + player.w && this.x +this.w-5 > player.x;
         // - 5 para ajustar la colision
        
         const colY = this.y + this.h > player.y && this.y < player.y + player.h;

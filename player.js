@@ -213,7 +213,7 @@ class Player {
           }
 
           if(this.scrollOffset > 20){
-            console.log('you win')
+            // console.log('you win')
           }
 
          

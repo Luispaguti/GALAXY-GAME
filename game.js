@@ -6,7 +6,7 @@ class Game {
 
     this.bg = new Background(ctx)
     this.enemies = []
-    // this.addEnemy()
+    this.addEnemy()
     // this.enemyBulletController = new Bullet2(ctx)
     
     this.bullets = []
@@ -18,6 +18,7 @@ class Game {
     this.setListeners()
 
     this.tick = 0;
+    
 
     this.scrollOffset = 0
 
@@ -31,6 +32,8 @@ class Game {
     this.audioGameOver = new Audio("audio/gameover1.mp3");
 
     this.audio2 = new Audio ("audio/eating.mp3")
+
+    this.audio3 = new Audio ("audio/pain1.mp3")
 
   }
 
@@ -59,6 +62,8 @@ class Game {
       this.checkCollisions();
       this.checkCollisionsBullets()
       this.checkCollisionsLife()
+     // this.scrollOffset++
+     
       // this.checkCollisionsBullets2()
 
       // al poner esto desaparecen los enemigos
@@ -77,27 +82,11 @@ class Game {
           ;
         }
 
-        if (this.scrollOffset = 500) {
-          this.tick+2
-         console.log('level 1')
-        
-        }
-        if (this.scrollOffset = 1000) {
-          this.tick+3
-         console.log('level 2')
-        
-        }
-
-        if (this.scrollOffset = 1500) {
-          this.tick+5
-          this.ctx.font = '50px serif';
-          this.ctx.fillText('Hello world', 50, 90)
-         console.log('level 3')
-        
-        }
+       
         
       }
-      this.record.scrollOffSet++
+      //this.record.scrollOffSet++
+
       // if(this.tick > Math.random() * 200 + 100) {
       //   this.tick = 0;
       //   this.addEnemy2();
@@ -116,7 +105,14 @@ class Game {
 
   addEnemy() {
     const enemy = new Enemy(this.ctx);
+   // this.enemies.push(enemy);
+   
     this.enemies.push(enemy);
+    //if (this.scrollOffset >= 100){
+     // this.enemy.level1();
+     // this.scrollOffset = 0
+      
+    //}
   }
   // addBullet2() {
   //   const bullet = new Bullet2(this.ctx);
@@ -169,7 +165,10 @@ class Game {
     this.enemies = this.enemies.filter((e) => {
 
       if (e.collides(this.player)) {
+        
         this.player.hit();
+        this.audio3.play();
+        
         return false;
       }
 
@@ -198,6 +197,14 @@ class Game {
 
   }
   
+  increaseLevel() {
+    if(this.scrollOffset >= 100){
+      console.log(this.scrollOffset)
+      console.log('luis')
+      this.enemy.level1();
+      
+    }
+  }
 
   // checkCollisionsBullets2() {
 
@@ -280,8 +287,9 @@ class Game {
     this.enemies.forEach(enemy => {
       this.player.bullets = this.player.bullets.filter((bullet) => {
         if (bullet.collidesBullets(enemy)) {
+          this.record.plus()
           enemy.alive = false
-          console.log('hit')
+        
           return false
         } else {
           return true
