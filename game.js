@@ -31,11 +31,14 @@ class Game {
 
     this.audio = new Audio("audio/Fluffin.mp3");
 
-    this.audioGameOver = new Audio("audio/gameover1.mp3");
+    this.audioGameOver = new Audio("audio/over4.mp3");
 
     this.audio2 = new Audio ("audio/eating.mp3")
 
     this.audio3 = new Audio ("audio/pain1.mp3")
+    
+    this.audio4 = new Audio ("audio/pop1.mp3")
+
 
   }
 
@@ -291,6 +294,7 @@ class Game {
       this.player.bullets = this.player.bullets.filter((bullet) => {
         if (bullet.collidesBullets(enemy)) {
           this.record.plus()
+          this.audio4.play()
           enemy.alive = false
         
           return false

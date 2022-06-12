@@ -60,7 +60,7 @@ class Life {
         const colX = this.x <= player.x + player.w && this.x +this.w-5 > player.x;
         // - 5 para ajustar la colision
        
-        const colY = this.y + this.h > player.y && this.y < player.y - 20 + player.h;
+        const colY = this.y + this.h-200 > player.y && this.y-200 < player.y + player.h;
  
         return colX && colY;
         
