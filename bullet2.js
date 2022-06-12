@@ -4,7 +4,7 @@ class Bullet2 {
         this.x = x;
         this.y = y;
         this.r = 7;
-        this.g = 0.3;
+        this.g = 2;
         
 
         this.vx = -10;
