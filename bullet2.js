@@ -5,17 +5,8 @@ class Bullet2 {
         this.y = y;
         this.r = 7;
         this.g = 2;
-        
-
         this.vx = -10;
         this.vy = 0
-
-        // const audio = new Audio ("audio/shoot.wav");
-        // audio.play();
-
-
-        // this.img = new Imagen()
-        // this.img.src ='./img/bullets.png'
     }
 
     draw() {
@@ -39,28 +30,16 @@ class Bullet2 {
         this.vy += this.g;
         this.x += this.vx - 20;
         this.y += this.vy;
-
     }
 
     isVisible() {
         return this.x < this.ctx.canvas.width;
-
-        // this.x = centro de la bala
     }
-
-
-    
 
     collidesBullets(player) {
         const collX = this.x <= player.x + player.w && this.x + this.r > player.x;
         const collY = this.y + this.r > player.y-15 && this.y <player.y-15 + player.h;
-
         return collX && collY;
-        // console.log('colision')
-        // devuelve true si colisiona con un enemigo y false si no lo hace
-
     }
-
-
 }
 
