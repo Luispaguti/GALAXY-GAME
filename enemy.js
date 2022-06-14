@@ -92,11 +92,10 @@ class Enemy {
             this.ctx, 
             this.x + this.w, 
             this.y + this.h - 100)
-          this.bullets.push(bullet)
+        this.bullets.push(bullet)
     }
 
     level1(){
-        console.log("¨MAMAHUE")
         this.vx += -5    
     }
 

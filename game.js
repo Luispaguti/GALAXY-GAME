@@ -11,6 +11,7 @@ class Game {
     this.setListeners()
     this.tick = 0;
     this.scrollOffset = 0
+    this.gameTime = 0
     this.record = new Record(this.ctx)
     this.highscore = new Record(this.ctx,`Highscore: `+ this.highscore )
     this.img = new Image()
