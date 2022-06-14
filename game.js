@@ -44,7 +44,7 @@ class Game {
     this.checkCollisionsLife()
     if (Math.floor(Math.random() * 101) % 25 === 0) {
       this.tick++;
-      if (this.tick > 5) {
+      if (this.tick > 4) {
           this.tick = 0;
           this.addEnemy();
         }

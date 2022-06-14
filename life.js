@@ -9,11 +9,17 @@ class Life {
         this.vy = 0
         this.g = 0.4
         this.alive = true
+        this.type = Math.floor(Math.random() * 101)
         this.img = new Image()
-        this.img.src = './img/life1.png'
+        this.img.src = './img/life4.png'
+        this.img1 = new Image()
+        this.img1.src = './img/life3.png'
+        this.img2 = new Image()
+        this.img2.src = './img/life1.png'
     }
     
     draw () {
+        if (this.type % 10 === 0 ) {
         this.ctx.drawImage(
             this.img,
             0,
@@ -25,8 +31,33 @@ class Life {
             60,
             -50
             )
-        } 
- 
+        }else if(this.type % 2 === 0 ) {
+            this.ctx.drawImage( 
+            this.img1,
+            0,
+            0,
+            this.img1.width,
+            this.img1.height,
+            this.x,
+            this.y - 200,
+            60,
+            -50
+            )
+        } else {
+            this.ctx.drawImage( 
+                this.img2,
+                0,
+                0,
+                this.img2.width,
+                this.img2.height,
+                this.x,
+                this.y - 200,
+                60,
+                -50
+                )
+        }
+    }
+
     move() {
         this.x += this.vx
         this.y += this.vy
@@ -34,9 +65,9 @@ class Life {
         if (this.y + this.h >= this.ctx.canvas.height){
             this.y = this.ctx.canvas.height - this.h
             this.vy *= 0
-        }  
+        } 
     }
-
+         
     isVisible(){
         return this.x + this.w > 0;
     }
